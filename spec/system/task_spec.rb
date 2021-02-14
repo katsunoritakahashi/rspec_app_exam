@@ -20,11 +20,11 @@ RSpec.describe 'Task', type: :system do
         visit project_path(project)
         click_link 'View Todos'
         #binding.irb
-        within_window(windows.last) do
-          expect(page).to have_content task.title
-          expect(Task.count).to eq 1
-          expect(current_path).to eq project_tasks_path(project)
-        end
+        switch_to_window(windows.last)
+        binding.irb
+        expect(page).to have_content task.title
+        expect(Task.count).to eq 1
+        expect(current_path).to eq project_tasks_path(project)
       end
     end
   end
